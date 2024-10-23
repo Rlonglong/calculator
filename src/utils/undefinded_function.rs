@@ -110,7 +110,6 @@ pub fn change_unfn(mut s : String) -> String {
                     }
                 }
                 if cnt != unfn.variables.len() {return "".to_string();}
-                println!("{} {}", cnt, unfn.variables.len());
                 for i in 0..unfn.variables.len() {
                     for j in l..inner_expressions.len()+1 {
                         if in_the_backet {
