@@ -86,6 +86,31 @@ pub fn change_unfn(mut s : String) -> String {
                 let mut left_backet = 0;
                 let mut in_the_backet = false;
                 let mut inner_expression = "";
+                let mut cnt = 0;
+                for j in l..inner_expressions.len()+1 {
+                    if in_the_backet {
+                        if inner_expressions.chars().nth(j).unwrap() == '['{
+                            left_backet += 1
+                        }
+                        else if inner_expressions.chars().nth(j).unwrap() == ']'{
+                            left_backet -= 1
+                        }
+                        if left_backet == 0 {
+                            in_the_backet = false;
+                        }
+                        continue;
+                    }
+                    else if j != inner_expressions.len() && inner_expressions.chars().nth(j).unwrap() == '[' {
+                        in_the_backet = true;
+                        left_backet = 1;
+                        continue;
+                    }
+                    if j == inner_expressions.len() || inner_expressions.chars().nth(j).unwrap() == ',' {
+                        cnt += 1;
+                    }
+                }
+                if cnt != unfn.variables.len() {return "".to_string();}
+                println!("{} {}", cnt, unfn.variables.len());
                 for i in 0..unfn.variables.len() {
                     for j in l..inner_expressions.len()+1 {
                         if in_the_backet {
