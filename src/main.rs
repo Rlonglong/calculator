@@ -8,8 +8,9 @@ use std::fs;
 fn main() {
     let mut variables : HashMap<String, Element> = HashMap::new();
     fs::File::create("un_m.json").expect("Failed to create file.");
-    println!("Haha! I think it's a calculator!\nPlease input \"exit\" to leave and \"--help\" to get help.\nHave fun with it. Haha!!!");
+    println!("Haha! I think it's a calculator!\nPlease input \"exit\" to leave, \"--help\" to get help and \"CLS\" or \"clear\" to clear the output.\nHave fun with it. Haha!!!");
     loop {
+        print!(">> ");
         let mut input = String::new();
         io::stdin()
             .read_line(&mut input)
@@ -21,6 +22,10 @@ fn main() {
         if input == "--help".to_string() {
             let file_content = include_str!(".././help.txt");
             println!("{file_content}");
+            continue;
+        }
+        if input == "CLS".to_string() || input == "clear".to_string() {
+            clearscreen::clear().expect("failed to clear screen");
             continue;
         }
         
