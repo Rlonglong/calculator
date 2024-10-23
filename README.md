@@ -1,4 +1,7 @@
 # calculator
+## demo
+<img src="https://github.com/user-attachments/assets/d37e755b-7c84-4086-845e-89df1de3b741" width="70%">
+
 ## usage
 ```
 Values types:
@@ -19,6 +22,7 @@ Offer the following predefined function:
     ln(x), log10(x), log2(2), log(x, base)
     round(x), floor(x), ceil(x)
     sqrt(x), exp(x), pow(x, e), abs(x)
+    min(x, y), max(x, y)
     min(list), max(list)
     rand(), rand(stop), rand(start, stop): random float (default range is 0.0 to 10.0)
     map(f, list): applies f to each element of list
