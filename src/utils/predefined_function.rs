@@ -8,146 +8,151 @@ use super::undefinded_function::{change_unfn, exist_unfn};
 use rand::Rng;
 
 fn sin(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in sin should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::sin(x)))
 }
 
 
 fn cos(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in cos should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::cos(x)))
 }
 
 fn tan(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in tan should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::tan(x)))
 }
 
 fn asin(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in asin should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::asin(x)))
 }
 
 fn acos(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in acos should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::acos(x)))
 }
 
 fn atan(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in atan should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::atan(x)))
 }
 
 fn ln(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in ln should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::ln(x)))
 }
 
 fn log10(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in log10 should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::log10(x)))
 }
 
 fn log2(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in log2 should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::log2(x)))
 }
 
 fn log(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in log should be 2 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     let base : f64 = v[1].parse().unwrap();
     Element::Num(Number::Float(f64::log(x, base)))
 }
 
 fn round_0(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameters in round should be 1 or 2 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(round::round(x, 0)))
 }
 
 fn round_n(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in round should be 1 or 2 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     let n : f64 = v[1].parse().unwrap();
     Element::Num(Number::Float(round::round(x, n as i32)))
 }
 
 fn floor_0(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameters in floor should be 1 or 2 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(round::round_down(x, 0)))
 }
 
 fn floor_n(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in floor should be 1 or 2 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     let n : f64 = v[1].parse().unwrap();
     Element::Num(Number::Float(round::round_down(x, n as i32)))
 }
 
 fn ceil_0(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameters in ceil should be 1 or 2 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(round::round_up(x, 0)))
 }
 
 fn ceil_n(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in ceil should be 1 or 2 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     let n : f64 = v[1].parse().unwrap();
     Element::Num(Number::Float(round::round_up(x, n as i32)))
 }
 
 fn sqrt(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in sqrt should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::sqrt(x)))
 }
 
 fn exp(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in exp should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::exp(x)))
 }
 
 fn pow(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in pow should be 2 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     let y : f64 = v[1].parse().unwrap();
     Element::Num(Number::Float(f64::powf(x, y)))
 }
 
 fn abs(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in abs should be 1 but got {}", v.len()));}
     let x : f64 = v[0].parse().unwrap();
     Element::Num(Number::Float(f64::abs(x)))
 }
 
 fn min(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in min should be 2 or a list but got {}", v.len()));}
+    if v[0].chars().nth(0).unwrap() == '[' {return  Element::Error(String::from("TypeError: cannot compare with the list type"));}
     let x : f64 = v[0].parse().unwrap();
+    if v[1].chars().nth(0).unwrap() == '[' {return  Element::Error(String::from("TypeError: cannot compare with the list type"));}
     let y : f64 = v[1].parse().unwrap();
     Element::Num(Number::Float(x.min(y)))
 }
 
 fn max(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in max should be 2 or a list but got {}", v.len()));}
+    if v[0].chars().nth(0).unwrap() == '[' {return  Element::Error(String::from("TypeError: cannot compare with the list type"));}
     let x : f64 = v[0].parse().unwrap();
+    if v[1].chars().nth(0).unwrap() == '[' {return  Element::Error(String::from("TypeError: cannot compare with the list type"));}
     let y : f64 = v[1].parse().unwrap();
     Element::Num(Number::Float(x.max(y)))
 }
 
 fn min_list(v : Vec<&str>) -> Element {
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameters in min should be 2 or a list but got {}", v.len()));}
     let mut mn : f64 = f64::MAX;
     let mut l = 1;
     for (i, char) in v[0].chars().enumerate() {
@@ -165,6 +170,7 @@ fn min_list(v : Vec<&str>) -> Element {
 }
 
 fn max_list(v : Vec<&str>) -> Element {
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameters in max should be 2 or a list but got {}", v.len()));}
     let mut mx : f64 = f64::MIN;
     let mut l = 1;
     for (i, char) in v[0].chars().enumerate() {
@@ -182,25 +188,25 @@ fn max_list(v : Vec<&str>) -> Element {
 }
 
 fn rand0to10(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 0);
+    if v.len() != 0 {return  Element::Error(format!("InputError: the number of parameters in rand should be 0, 1 or 2 but got {}", v.len()));}
     let n1: f64 = rand::thread_rng().gen_range(0.0..10.0);
     Element::Num(Number::Float(n1))
 }
 
 fn rand0tox(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameters in rand should be 0, 1 or 2 but got {}", v.len()));}
     let n1: f64 = rand::thread_rng().gen_range(0.0..v[0].parse().unwrap());
     Element::Num(Number::Float(n1))
 }
 
 fn randxtoy(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in rand should be 0, 1 or 2 but got {}", v.len()));}
     let n1: f64 = rand::thread_rng().gen_range(v[0].parse().unwrap()..v[1].parse().unwrap());
     Element::Num(Number::Float(n1))
 }
 
 fn range1tox(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameters in range should be 1 or 2 but got {}", v.len()));}
     let mut list = Vec::new();
     let stop = v[0].parse::<i64>().unwrap()+1;
     for i in 1..stop {
@@ -210,7 +216,7 @@ fn range1tox(v : Vec<&str>) -> Element {
 }
 
 fn rangextoy(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in range should be 1 or 2 but got {}", v.len()));}
     let mut list = Vec::new();
     let start = v[0].parse::<i64>().unwrap();
     let stop = v[1].parse::<i64>().unwrap()+1;
@@ -221,7 +227,7 @@ fn rangextoy(v : Vec<&str>) -> Element {
 }
 
 fn map(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 2);
+    if v.len() != 2 {return  Element::Error(format!("InputError: the number of parameters in map should be 2 but got {}", v.len()));}
     let function;
     if v[0].len() >= 2 && &v[0][v[0].len()-2..v[0].len()] == "()" {
         function = &v[0][..v[0].len()-2];
@@ -269,7 +275,7 @@ fn map(v : Vec<&str>) -> Element {
 }
 
 fn sort(v : Vec<&str>) -> Element {
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameters in sort should be 1 but got {}", v.len()));}
     let mut list = Vec::new();
     let mut l = 0;
     for (i, char) in v[0][1..v[0].len()-1].chars().enumerate() {
@@ -295,7 +301,7 @@ fn sort(v : Vec<&str>) -> Element {
 }
 
 fn length(v : Vec<&str>) -> Element{
-    assert_eq!(v.len(), 1);
+    if v.len() != 1 {return  Element::Error(format!("InputError: the number of parameter in length should be 1 but got {}", v.len()));}
     let mut cnt = 0;
     let mut left_backet = 0;
     let mut in_the_backet = false;
