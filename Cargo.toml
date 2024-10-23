@@ -1,0 +1,13 @@
+[package]
+name = "calculator"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+round = "0.1"
+rand = "0.8"
+lazy_static = "1.4"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+regex = "1"
